@@ -1,8 +1,9 @@
 let minutes = 25;
 let seconds = 0;
 let pomo;
-let running;
+let running = false;
 let mode = "pomodoro";
+let hideTimer;
 
 // Local Storage
 let font = localStorage.getItem("font");
@@ -28,6 +29,7 @@ try {
     localStorage.setItem("pomodoroTime", "25");
     document.getElementById("pomodoro-time").value = "25";
   }
+
   if (breakTime) {
     document.getElementById("break-time").value = breakTime;
   } else {
@@ -58,9 +60,41 @@ try {
 try {
   document.getElementById("mode").textContent = mode;
 
+  const elements = document.querySelectorAll(".hide");
+
+  const showElements = () => {
+    elements.forEach((el) => {
+      el.classList.remove("is-hidden");
+    });
+  };
+
+  const hideElements = () => {
+    if (running === true) {
+      elements.forEach((el) => {
+        el.classList.add("is-hidden");
+      });
+    }
+  };
+
+  const resetHideTimer = () => {
+    showElements();
+    clearTimeout(hideTimer);
+
+    if (running === true) {
+      hideTimer = setTimeout(hideElements, 10000);
+    }
+  };
+
+  ["mousemove", "mousedown", "keydown", "touchstart", "scroll"].forEach(
+    (event) => {
+      document.addEventListener(event, resetHideTimer, { passive: true });
+    },
+  );
+
   if (font) {
     document.getElementById("timer").style.fontFamily = font;
   }
+
   if (pomodoroTime) {
     minutes = pomodoroTime;
   }
@@ -71,15 +105,22 @@ try {
   document.getElementById("settings").addEventListener("click", () => {
     window.location.href = "settings.html";
   });
+
   document.getElementById("reset").addEventListener("click", () => {
     clearInterval(pomo);
+    clearTimeout(hideTimer);
     running = false;
+
     if (mode == "pomodoro") {
       minutes = pomodoroTime;
     } else {
       minutes = breakTime;
     }
+
     seconds = 0;
+
+    showElements();
+
     document.getElementById("timer").textContent =
       `${minutes}:${seconds.toString().padStart(2, "0")}`;
   });
@@ -89,6 +130,7 @@ try {
       return;
     } else {
       mode = "pomodoro";
+
       pomo = setInterval(() => {
         if (seconds > 0) {
           seconds--;
@@ -108,16 +150,21 @@ try {
           minutes--;
           seconds = 59;
         }
+
         document.getElementById("timer").textContent =
           `${minutes}:${seconds.toString().padStart(2, "0")}`;
       }, 1000);
+
       running = true;
+      resetHideTimer();
     }
   });
 
   document.getElementById("pause").addEventListener("click", () => {
     clearInterval(pomo);
+    clearTimeout(hideTimer);
     running = false;
+    showElements();
   });
 } catch (error) {
   // shhh

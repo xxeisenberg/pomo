@@ -117,3 +117,13 @@ option {
   font-size: 1.2rem;
   margin: 0;
 }
+
+.hide {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.hide.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
