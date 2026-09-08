@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro - settings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="settings-body">
+    <h1 class="title">Settings</h1>
+    <main>
+      <div class="settings-container">
+        <div class="font-settings">
+          <label for="font-select">Font</label>
+          <select name="" id="font-select">
+            <option value="arial">Arial</option>
+            <option value="times new roman">Times New Roman</option>
+            <option value="monospace">Monospace</option>
+          </select>
+        </div>
+        <div class="timer-settings">
+          <p>Time</p>
+          <div class="pomodoro-time">
+            <label for="pomodoro-time">Pomodoro Time</label>
+            <input type="number" id="pomodoro-time" value="25" />
+          </div>
+          <div class="break-time">
+            <label for="break-time">Break Time</label>
+            <input type="number" id="break-time" value="5" />
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="back">
+      <button id="back-btn">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+        >
+          <path
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m5 12 6-6m-6 6 6 6m-6-6h14"
+          />
+        </svg>
+      </button>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

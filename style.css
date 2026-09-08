@@ -1,0 +1,119 @@
+.index-body {
+  background-image: url("bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#timer {
+  font-size: 40rem;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#settings {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+#reset:hover {
+  background-color: #ee7676;
+}
+
+#back {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+/* Settings Page */
+
+.settings-body {
+  max-width: 50vw;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 3rem;
+}
+
+main {
+  background-color: rgb(245, 245, 245);
+  height: fit-content;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 50vw;
+}
+
+.font-settings,
+.timer-settings {
+  background-color: white;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.font-settings {
+  display: flex;
+  justify-content: space-between;
+}
+
+label,
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+input {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+select {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+option {
+  font-size: 1rem;
+}
+
+#mode {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  color: rgb(160, 160, 160);
+  text-transform: capitalize;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+  margin: 0;
+}
